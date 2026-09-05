@@ -1,13 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Security Awareness Training</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Security Verification</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            width: 380px;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fff3cd;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Phishing Awareness Lab</h1>
+<div class="box">
 
-    <p>This is an authorized educational security simulation.</p>
+    <h2>Account Verification</h2>
+
+    <p>
+        Please verify your account to continue.
+    </p>
+
+    <form onsubmit="showTrainingMessage(event)">
+
+        <label>Username</label>
+        <input type="text" placeholder="Enter username">
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password">
+
+        <button type="submit">Verify Account</button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+function showTrainingMessage(event) {
+    event.preventDefault();
+
+    document.getElementById("message").innerHTML =
+        "<div class='notice'>" +
+        "<strong>Phishing Awareness Simulation</strong><br><br>" +
+        "This is an authorized security-awareness exercise. " +
+        "No credentials were collected or transmitted." +
+        "</div>";
+}
+</script>
 
 </body>
 </html>
