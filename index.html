@@ -7,202 +7,92 @@
     <title>Security Verification</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: #f3f4f6;
-            min-height: 100vh;
+            background: #f4f6f8;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .container {
-            width: 400px;
+        .box {
             background: white;
-            padding: 40px;
+            width: 380px;
+            padding: 35px;
             border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 24px;
+        h2 {
             margin-bottom: 10px;
         }
 
-        .description {
+        p {
             color: #555;
             line-height: 1.5;
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: bold;
         }
 
         input {
             width: 100%;
             padding: 12px;
+            margin-top: 8px;
             margin-bottom: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 15px;
+            box-sizing: border-box;
         }
 
         button {
             width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 5px;
-            background: #1f2937;
-            color: white;
-            font-size: 16px;
+            padding: 12px;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #111827;
-        }
-
-        .warning {
-            margin-top: 25px;
+        .notice {
+            margin-top: 20px;
             padding: 12px;
-            background: #fff7ed;
-            border-left: 4px solid #f97316;
-            font-size: 13px;
-            color: #555;
-        }
-
-        #trainingMessage {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            background: #ecfdf5;
-            border: 1px solid #10b981;
-            border-radius: 6px;
-        }
-
-        #trainingMessage h2 {
-            margin-top: 0;
-            color: #047857;
-            font-size: 20px;
-        }
-
-        .indicator {
-            margin-top: 15px;
-            padding: 10px;
-            background: #f9fafb;
-            border-radius: 5px;
+            background: #fff3cd;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="box">
 
-    <div class="logo">
-        Company Security
-    </div>
+    <h2>Account Verification</h2>
 
-    <h1>Account Verification</h1>
-
-    <p class="description">
-        We detected unusual activity associated with your account.
-        Please verify your account information to continue.
+    <p>
+        Please verify your account to continue.
     </p>
 
-    <form id="verificationForm">
+    <form onsubmit="showTrainingMessage(event)">
 
-        <label for="username">Username</label>
+        <label>Username</label>
+        <input type="text" placeholder="Enter username">
 
-        <input
-            type="text"
-            id="username"
-            placeholder="Enter your username"
-        >
+        <label>Password</label>
+        <input type="password" placeholder="Enter password">
 
-        <label for="password">Password</label>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-        >
-
-        <button type="submit">
-            Verify Account
-        </button>
+        <button type="submit">Verify Account</button>
 
     </form>
 
-    <div class="warning">
-        Security verification is required to prevent interruption
-        of your account access.
-    </div>
-
-    <div id="trainingMessage">
-
-        <h2>Phishing Awareness Exercise</h2>
-
-        <p>
-            This was a simulated phishing page created for
-            authorized security-awareness training.
-        </p>
-
-        <p>
-            No username or password was transmitted or stored.
-        </p>
-
-        <div class="indicator">
-            <strong>What should you have checked?</strong>
-
-            <ul>
-                <li>The sender of the original email</li>
-                <li>The actual destination of the link</li>
-                <li>Unexpected urgency or threats</li>
-                <li>Whether the request was expected</li>
-                <li>The website domain</li>
-            </ul>
-        </div>
-
-    </div>
+    <div id="message"></div>
 
 </div>
 
 <script>
+function showTrainingMessage(event) {
+    event.preventDefault();
 
-    document
-        .getElementById("verificationForm")
-        .addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            /*
-             * IMPORTANT:
-             * Nothing is sent to a server.
-             * The entered values are not stored.
-             */
-
-            document.getElementById("trainingMessage").style.display = "block";
-
-            this.style.display = "none";
-
-        });
-
+    document.getElementById("message").innerHTML =
+        "<div class='notice'>" +
+        "<strong>Phishing Awareness Simulation</strong><br><br>" +
+        "This is an authorized security-awareness exercise. " +
+        "No credentials were collected or transmitted." +
+        "</div>";
+}
 </script>
 
 </body>
